@@ -1,0 +1,190 @@
+
+/* GENERAL RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY DESIGN */
+body {
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #e0f2fe, #f5eaff);
+    color: #222;
+    display: flex;
+    flex-direction: column;
+}
+
+/* HEADER */
+.header {
+    text-align: center;
+    padding: 40px 20px 25px;
+}
+
+.header h1 {
+    font-size: 34px;
+    color: #263b80;
+    margin-bottom: 12px;
+}
+
+.header p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* CARD GRID */
+.card-container {
+    width: min(1100px, 90%);
+    margin: 20px auto 40px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+/* CARD */
+.card {
+    height: 260px;
+    perspective: 1000px;
+    cursor: pointer;
+    outline: none;
+}
+
+/* INNER CARD */
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease;
+    border-radius: 18px;
+}
+
+/* HOVER AND KEYBOARD FLIP EFFECT */
+.card:hover .card-inner,
+.card:focus .card-inner {
+    transform: rotateY(180deg);
+}
+
+/* FRONT AND BACK COMMON DESIGN */
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 25px;
+    color: white;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* FRONT SIDE */
+.card-front h2 {
+    font-size: 27px;
+    margin: 12px 0;
+}
+
+.card-front p {
+    font-size: 15px;
+}
+
+/* CARD ICON */
+.card-icon {
+    font-size: 42px;
+}
+
+/* INDIVIDUAL CARD BACKGROUNDS */
+.travel {
+    background: linear-gradient(135deg, #2193b0, #6dd5ed);
+}
+
+.technology {
+    background: linear-gradient(135deg, #373b44, #4286f4);
+}
+
+.education {
+    background: linear-gradient(135deg, #614385, #516395);
+}
+
+.food {
+    background: linear-gradient(135deg, #f7971e, #ffd200);
+}
+
+.creativity {
+    background: linear-gradient(135deg, #cc2b5e, #753a88);
+}
+
+.innovation {
+    background: linear-gradient(135deg, #11998e, #38ef7d);
+}
+
+/* BACK SIDE */
+.card-back {
+    background: linear-gradient(135deg, #232526, #414345);
+    transform: rotateY(180deg);
+}
+
+.card-back h2 {
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.card-back p {
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+/* KEYBOARD FOCUS INDICATOR */
+.card:focus-visible {
+    outline: 3px solid #263b80;
+    outline-offset: 5px;
+    border-radius: 18px;
+}
+
+/* FOOTER */
+.footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+    background: #263b80;
+    color: white;
+    font-size: 14px;
+}
+
+/* TABLET RESPONSIVENESS */
+@media (max-width: 900px) {
+    .card-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 600px) {
+    .header h1 {
+        font-size: 26px;
+    }
+
+    .card-container {
+        grid-template-columns: 1fr;
+        width: 88%;
+    }
+
+    .card {
+        height: 240px;
+    }
+}
+
+/* REDUCE ANIMATION FOR ACCESSIBILITY */
+@media (prefers-reduced-motion: reduce) {
+    .card-inner {
+        transition: none;
+    }
+}
