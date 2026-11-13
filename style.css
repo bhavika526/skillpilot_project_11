@@ -1,0 +1,273 @@
+/* =========================================
+   INTERACTIVE HOVER CARD GRID
+   HTML + CSS | Tasks 1, 2 and 3
+========================================= */
+
+/* 1. Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+    color: #29283a;
+    background: #f4f5fb;
+}
+
+/* 2. Header */
+.site-header {
+    padding: 52px 20px;
+    text-align: center;
+    color: #ffffff;
+    background: linear-gradient(135deg, #5145cd, #9275f5);
+}
+
+.header-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.eyebrow {
+    margin-bottom: 10px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.site-header h1 {
+    margin-bottom: 10px;
+    font-size: clamp(30px, 5vw, 44px);
+    line-height: 1.15;
+}
+
+.header-description {
+    font-size: 16px;
+}
+
+/* 3. Main container and introduction */
+.container {
+    width: min(1120px, 100%);
+    margin: 0 auto;
+    padding: 42px 24px 55px;
+}
+
+.intro {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.intro h2 {
+    margin-bottom: 7px;
+    font-size: 25px;
+}
+
+.intro p {
+    color: #666579;
+    font-size: 15px;
+}
+
+/* 4. Responsive card grid - Task 3 */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+/* 5. Individual cards */
+.card {
+    position: relative;
+    min-height: 270px;
+    overflow: hidden;
+    border-radius: 18px;
+    cursor: pointer;
+    isolation: isolate;
+    box-shadow: 0 7px 20px rgba(35, 32, 75, 0.12);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.card-travel {
+    background: linear-gradient(135deg, #ff9966, #ff5e62);
+}
+
+.card-technology {
+    background: linear-gradient(135deg, #4776e6, #8e54e9);
+}
+
+.card-education {
+    background: linear-gradient(135deg, #11998e, #38b879);
+}
+
+.card-food {
+    background: linear-gradient(135deg, #f7971e, #e8b923);
+}
+
+.card-creativity {
+    background: linear-gradient(135deg, #fc5c7d, #6a82fb);
+}
+
+.card-innovation {
+    background: linear-gradient(135deg, #654ea3, #a66bbd);
+}
+
+/* 6. Front content */
+.card-front,
+.card-back {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.card-front {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.card-icon {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 48px;
+}
+
+.card-front h3,
+.card-back h3 {
+    margin-bottom: 9px;
+    font-size: 24px;
+}
+
+.card-front p {
+    font-size: 15px;
+}
+
+.hint {
+    margin-top: 22px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* 7. Hidden back content */
+.card-back {
+    background: rgba(31, 29, 57, 0.94);
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.back-icon {
+    margin-bottom: 9px;
+    font-size: 32px;
+}
+
+.card-back p {
+    max-width: 270px;
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+.tag {
+    display: inline-block;
+    margin-top: 17px;
+    padding: 7px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* 8. Hover and keyboard interaction - Task 2 */
+.card:hover,
+.card:focus {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 30px rgba(35, 32, 75, 0.20);
+}
+
+.card:hover .card-front,
+.card:focus .card-front {
+    opacity: 0;
+    transform: translateY(-18px);
+}
+
+.card:hover .card-back,
+.card:focus .card-back {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 9. Visible keyboard focus */
+.card:focus {
+    outline: none;
+}
+
+.card:focus-visible {
+    outline: 3px solid #3025a8;
+    outline-offset: 4px;
+}
+
+/* 10. Footer */
+.site-footer {
+    margin-top: auto;
+    padding: 21px 15px;
+    text-align: center;
+    color: #ffffff;
+    background: #29283a;
+    font-size: 13px;
+}
+
+/* 11. Tablet layout */
+@media screen and (max-width: 900px) {
+    .card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* 12. Mobile layout */
+@media screen and (max-width: 600px) {
+    .site-header {
+        padding: 38px 16px;
+    }
+
+    .container {
+        padding: 30px 18px 40px;
+    }
+
+    .card-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .card {
+        min-height: 245px;
+    }
+
+    .intro h2 {
+        font-size: 22px;
+    }
+}
+
+/* 13. Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .card,
+    .card-front,
+    .card-back {
+        transition: none;
+    }
+
+    .card:hover,
+    .card:focus {
+        transform: none;
+    }
+}
+
+/* End of stylesheet */
